@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portafolio - Rufo Nava</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        plugins: [require("daisyui")],
+        daisyui: {
+          themes: ["light", "dark"],
+        },
+      };
+    </script>
+    <style>
+      .writing-vertical-rl {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+      }
+
+      @keyframes colorChange {
+        0% {
+          color: white;
+        }
+        30% {
+          color: #df1332;
+        }
+        100% {
+          color: rgb(0, 0, 0);
+        }
+      }
+
+      .animate-color {
+        animation: colorChange 12s ease-in-out infinite;
+      }
+
+      /* Deshabilitar el scroll */
+      body {
+        overflow: hidden;
+      }
+
+      /* Ajustar el posicionamiento de las secciones */
+      section {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        display: none;
+      }
+
+      /* Mostrar la sección activa */
+      section.active {
+        opacity: 1;
+        display: flex !important;
+      }
+
+      /* Asegurar que el header no tenga borde */
+      header {
+        border: none;
+        box-shadow: none;
+      }
+
+      section.hidden {
+        display: none !important;
+      }
+    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body class="m-0 p-0 box-border font-sans">
+    <div class="flex min-h-screen bg-black">
+      <!-- Aquí va la navegación del lado izquierdo -->
+      <nav class="fixed top-0 left-0 h-screen w-10 bg-black z-50">
+        <div class="flex flex-col h-full">
+          <!-- Boton del home -->
+          <a
+            href="#hero"
+            class="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-pink-500/10 transition-all duration-200 group nav-link"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+              />
+            </svg>
+            <div
+              class="absolute left-0 top-0 w-0.5 h-full bg-pink-900 opacity-0 group-hover:opacity-100 transition-opacity"
+            ></div>
+          </a>
+
+          <!-- Navigation Links -->
+          <div class="flex flex-col flex-grow justify-center space-y-16">
+            <a
+              href="#illustration-section"
+              class="writing-vertical-rl transform rotate-180 text-sm font-semibold text-gray-400 hover:text-white hover:bg-pink-500/10 transition-all duration-200 py-6 relative group nav-link"
+            >
+              Illustration
+              <div
+                class="absolute left-0 top-0 w-0.5 h-full bg-pink-900 opacity-0 group-hover:opacity-100 transition-opacity"
+              ></div>
+            </a>
+            <a
+              href="#design"
+              class="writing-vertical-rl transform rotate-180 text-sm font-semibold text-gray-400 hover:text-white hover:bg-pink-500/10 transition-all duration-200 py-6 relative group nav-link"
+            >
+              Design
+            </a>
+            <a
+              href="#development"
+              class="writing-vertical-rl transform rotate-180 text-sm font-semibold text-gray-400 hover:text-white hover:bg-pink-500/10 transition-all duration-200 py-6 relative group nav-link"
+            >
+              Development
+            </a>
+            <a
+              href="#about"
+              class="writing-vertical-rl transform rotate-180 text-sm font-semibold text-gray-400 hover:text-white hover:bg-pink-500/10 transition-all duration-200 py-6 relative group nav-link"
+            >
+              About me
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- La barra de arriba con el nombre y redes sociales -->
+      <header
+        class="fixed top-0 left-10 right-0 h-16 bg-black text-white z-40 flex justify-between items-center px-5 shadow-[0_0_15px_rgba(220,38,38,0.2)]"
+      >
+        <div class="text-2xl font-bold">Rufo Nava</div>
+        <div class="flex gap-6 items-center">
+          <!-- Instagram -->
+          <a
+            href="https://www.instagram.com/amimedicenrufo/?next=%2F"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-white hover:text-gray-300 transition-colors"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+              />
+            </svg>
+          </a>
+
+          <!-- Twitter/X -->
+          <a
+            href="https://x.com/NavaRufo"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-white hover:text-gray-300 transition-colors"
+          >
+            <i class="fa-brands fa-x-twitter text-2xl"></i>
+          </a>
+
+          <!-- BlueSky -->
+          <a
+            href="https://bsky.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-white hover:text-gray-300 transition-colors"
+          >
+            <i class="fa-solid fa-butterfly text-2xl"></i>
+          </a>
+
+          <!-- LinkedIn (Nuevo ícono) -->
+          <a
+            href="#"
+            class="text-white hover:text-gray-300 transition-colors cursor-not-allowed opacity-50"
+          >
+            <i class="fa-brands fa-linkedin text-2xl"></i>
+          </a>
+        </div>
+      </header>
+      <main class="flex-1 ml-10">
+        <!-- coso que ve la gente al entrar -->
+        <section
+          id="hero"
+          class="fixed top-16 left-10 right-0 bottom-0 bg-black text-white flex items-center active"
+        >
+          <div class="container mx-auto px-4 max-w-7xl flex gap-8">
+            <!-- Columna de imagen -->
+            <div class="w-1/2 flex items-center justify-center">
+              <img
+                src="https://res-console.cloudinary.com/dpox0yfvk/thumbnails/v1/image/upload/v1733285326/ZHAwdHNldTJveno3bG10ZTJvYmc=/drilldown"
+                alt="Rufo Nava"
+                class="max-w-full h-auto object-cover"
+              />
+            </div>
+
+            <!-- Columna de texto -->
+            <div class="w-1/2 flex flex-col justify-center gap-6">
+              <h1 class="text-7xl font-bold leading-tight">
+                <span class="animate-color" style="animation-delay: 0s"
+                  >Full Stack Web </span
+                ><br />
+                <span class="animate-color" style="animation-delay: 1s"
+                  >Developer</span
+                ><br />
+                <span class="animate-color" style="animation-delay: 2s"
+                  >Maker</span
+                ><br />
+                <span class="animate-color" style="animation-delay: 3s"
+                  >Ilustrator</span
+                >
+              </h1>
+              <div class="text-2xl text-gray-300">
+                I'm Rufo, a Full Stack Web Developer at
+                <span class="px-3 py-1 bg-gray-800 rounded-md">WATEVER</span>,
+                where I craft intuitive user experiences. After hours, I build
+                my own projects.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Sección de Ilustraciones -->
+        <section
+          id="illustration-section"
+          class="fixed inset-y-16 inset-x-10 bg-black text-white hidden"
+        >
+          <div class="relative w-full h-full flex flex-col">
+            <h2 class="absolute top-4 left-8 text-4xl font-bold z-20">
+              Illustration
+            </h2>
+
+            <div class="flex-1 flex items-center justify-center">
+              <div class="carousel w-full">
+                <!-- Ilustración 1 -->
+                <div
+                  id="illustration-1"
+                  class="carousel-item relative w-full flex justify-center"
+                >
+                  <img
+                    src="https://res-console.cloudinary.com/dpox0yfvk/thumbnails/v1/image/upload/v1733257732/cXdnd3lnZXY1eGZ1cnU4b3J6dXk=/drilldown"
+                    class="h-[70vh] object-contain"
+                  />
+                  <div
+                    class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+                  >
+                    <a href="#illustration-5" class="btn btn-circle">❮</a>
+                    <a href="#illustration-2" class="btn btn-circle">❯</a>
+                  </div>
+                </div>
+
+                <!-- Ilustración 2 -->
+                <div
+                  id="illustration-2"
+                  class="carousel-item relative w-full flex justify-center"
+                >
+                  <img
+                    src="https://res-console.cloudinary.com/dpox0yfvk/thumbnails/v1/image/upload/v1733257862/Z3RwMXJpYWp1bW96dmo5b3d1dHY=/drilldown"
+                    class="h-[70vh] object-contain"
+                  />
+                  <div
+                    class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+                  >
+                    <a href="#illustration-1" class="btn btn-circle">❮</a>
+                    <a href="#illustration-3" class="btn btn-circle">❯</a>
+                  </div>
+                </div>
+
+                <!-- Ilustración 3 -->
+                <div
+                  id="illustration-3"
+                  class="carousel-item relative w-full flex justify-center"
+                >
+                  <img
+                    src="https://res-console.cloudinary.com/dpox0yfvk/thumbnails/v1/image/upload/v1733257895/aDFxaWpmZXZoaWtnMWt0cmN3Mm8=/drilldown"
+                    class="h-[70vh] object-contain"
+                  />
+                  <div
+                    class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+                  >
+                    <a href="#illustration-2" class="btn btn-circle">❮</a>
+                    <a href="#illustration-4" class="btn btn-circle">❯</a>
+                  </div>
+                </div>
+
+                <!-- Ilustración 4 -->
+                <div
+                  id="illustration-4"
+                  class="carousel-item relative w-full flex justify-center"
+                >
+                  <img
+                    src="https://res-console.cloudinary.com/dpox0yfvk/thumbnails/v1/image/upload/v1733257861/Y3V3aW1qbXpzMTNoaG5rOHVxZHg=/drilldown"
+                    class="h-[70vh] object-contain"
+                  />
+                  <div
+                    class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+                  >
+                    <a href="#illustration-3" class="btn btn-circle">❮</a>
+                    <a href="#illustration-5" class="btn btn-circle">❯</a>
+                  </div>
+                </div>
+
+                <!-- Ilustración 5 -->
+                <div
+                  id="illustration-5"
+                  class="carousel-item relative w-full flex justify-center"
+                >
+                  <img
+                    src="https://res-console.cloudinary.com/dpox0yfvk/thumbnails/v1/image/upload/v1733257728/bjBqaHpheG1vbGc3c2RhY254cXo=/drilldown"
+                    class="h-[70vh] object-contain"
+                  />
+                  <div
+                    class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+                  >
+                    <a href="#illustration-4" class="btn btn-circle">❮</a>
+                    <a href="#illustration-1" class="btn btn-circle">❯</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Sección de Diseño -->
+        <section
+          id="design"
+          class="fixed inset-y-16 inset-x-10 bg-black text-white hidden"
+        >
+          <div class="relative w-full h-full flex flex-col">
+            <h2 class="absolute top-4 left-8 text-4xl font-bold z-20">
+              Design
+            </h2>
+
+            <div class="flex-1 flex items-center justify-center">
+              <div class="carousel w-full">
+                <!-- Diseño 1 -->
+                <div
+                  id="design-1"
+                  class="carousel-item relative w-full flex justify-center"
+                >
+                  <img
+                    src="https://res-console.cloudinary.com/dpox0yfvk/thumbnails/v1/image/upload/v1733257727/Z2xndWE5d3p1cWV3anpqYmV3ano=/drilldown"
+                    class="h-[70vh] object-contain rounded-lg"
+                  />
+                  <div
+                    class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+                  >
+                    <a href="#design-9" class="btn btn-circle">❮</a>
+                    <a href="#design-2" class="btn btn-circle">❯</a>
+                  </div>
+                </div>
+
+                <!-- Diseño 2 -->
+                <div
+                  id="design-2"
+                  class="carousel-item relative w-full flex justify-center"
+                >
+                  <img
+                    src="https://res-console.cloudinary.com/dpox0yfvk/thumbnails/v1/image/upload/v1733257725/czF2dGhmaXkyd25tbGs5bGN0YWQ=/drilldown"
+                    class="h-[70vh] object-contain rounded-lg"
+                  />
+                  <div
+                    class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+                  >
+                    <a href="#design-1" class="btn btn-circle">❮</a>
+                    <a href="#design-3" class="btn btn-circle">❯</a>
+                  </div>
+                </div>
+
+                <!-- Diseño 3 -->
+                <div
+                  id="design-3"
+                  class="carousel-item relative w-full flex justify-center"
+                >
+                  <img
+                    src="https://res-console.cloudinary.com/dpox0yfvk/thumbnails/v1/image/upload/v1733257725/aWF1emd3cHVwd240eHVsejljNm0=/drilldown"
+                    class="h-[70vh] object-contain rounded-lg"
+                  />
+                  <div
+                    class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+                  >
+                    <a href="#design-2" class="btn btn-circle">❮</a>
+                    <a href="#design-4" class="btn btn-circle">❯</a>
+                  </div>
+                </div>
+
+                <!-- Diseño 4 -->
+                <div
+                  id="design-4"
+                  class="carousel-item relative w-full flex justify-center"
+                >
+                  <img
+                    src="https://res-console.cloudinary.com/dpox0yfvk/thumbnails/v1/image/upload/v1733257820/d3VuNmdzcHdocXV2NG9xYTNrMnM=/drilldown"
+                    class="h-[70vh] object-contain rounded-lg"
+                  />
+                  <div
+                    class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+                  >
+                    <a href="#design-3" class="btn btn-circle">❮</a>
+                    <a href="#design-5" class="btn btn-circle">❯</a>
+                  </div>
+                </div>
+
+                <!-- Diseño 5 -->
+                <div
+                  id="design-5"
+                  class="carousel-item relative w-full flex justify-center"
+                >
+                  <img
+                    src="https://res-console.cloudinary.com/dpox0yfvk/thumbnails/v1/image/upload/v1733257734/a3RoY2pqb3FianplYmRxNDBqcmE=/drilldown"
+                    class="h-[70vh] object-contain rounded-lg"
+                  />
+                  <div
+                    class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+                  >
+                    <a href="#design-4" class="btn btn-circle">❮</a>
+                    <a href="#design-6" class="btn btn-circle">❯</a>
+                  </div>
+                </div>
+
+                <!-- Diseño 6 -->
+                <div
+                  id="design-6"
+                  class="carousel-item relative w-full flex justify-center"
+                >
+                  <img
+                    src="https://res-console.cloudinary.com/dpox0yfvk/thumbnails/v1/image/upload/v1733257730/aXBhN3BxbTRicG94a3M1cHZkZGU=/drilldown"
+                    class="h-[70vh] object-contain rounded-lg"
+                  />
+                  <div
+                    class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+                  >
+                    <a href="#design-5" class="btn btn-circle">❮</a>
+                    <a href="#design-7" class="btn btn-circle">❯</a>
+                  </div>
+                </div>
+
+                <!-- Diseño 7 -->
+                <div
+                  id="design-7"
+                  class="carousel-item relative w-full flex justify-center"
+                >
+                  <img
+                    src="https://res-console.cloudinary.com/dpox0yfvk/thumbnails/v1/image/upload/v1733257841/a2tzajZ2Y29ocW81N3FsZ3l0b2Y=/drilldown"
+                    class="h-[70vh] object-contain rounded-lg"
+                  />
+                  <div
+                    class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+                  >
+                    <a href="#design-6" class="btn btn-circle">❮</a>
+                    <a href="#design-8" class="btn btn-circle">❯</a>
+                  </div>
+                </div>
+
+                <!-- Diseño 8 -->
+                <div
+                  id="design-8"
+                  class="carousel-item relative w-full flex justify-center"
+                >
+                  <img
+                    src="https://res-console.cloudinary.com/dpox0yfvk/thumbnails/v1/image/upload/v1733257840/eWNxMXdxdHNwY2F1andydHlpd3A=/drilldown"
+                    class="h-[70vh] object-contain rounded-lg"
+                  />
+                  <div
+                    class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+                  >
+                    <a href="#design-7" class="btn btn-circle">❮</a>
+                    <a href="#design-9" class="btn btn-circle">❯</a>
+                  </div>
+                </div>
+                <div
+                  id="design-9"
+                  class="carousel-item relative w-full flex justify-center"
+                >
+                  <img
+                    src="https://res-console.cloudinary.com/dpox0yfvk/thumbnails/v1/image/upload/v1733257840/ZjFuejJ3MGN5dGhhdDQzczh4Ymc=/drilldown"
+                    class="h-[70vh] object-contain rounded-lg"
+                  />
+                  <div
+                    class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+                  >
+                    <a href="#design-8" class="btn btn-circle">❮</a>
+                    <a href="#design-1" class="btn btn-circle">❯</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Sección de Desarrollo -->
+        <section
+          id="development"
+          class="fixed inset-y-16 inset-x-10 bg-black text-white hidden"
+        >
+          <div class="relative w-full h-full flex flex-col">
+            <h2 class="absolute top-4 left-8 text-4xl font-bold z-20">
+              Development
+            </h2>
+
+            <div class="flex-1 flex items-center justify-center">
+              <div class="carousel w-full">
+                <!-- Proyecto 1: Magodin -->
+                <div
+                  id="dev-1"
+                  class="carousel-item relative w-full flex justify-center"
+                >
+                  <a
+                    href="https://magodin.com/"
+                    target="_blank"
+                    class="group relative block"
+                  >
+                    <img
+                      src="https://res-console.cloudinary.com/dpox0yfvk/thumbnails/v1/image/upload/v1733258066/Y2lzeDU5MG1hOGViaHlrbGNlbTk=/drilldown"
+                      class="h-[70vh] object-contain rounded-lg transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div
+                      class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex flex-col items-center justify-center"
+                    >
+                      <h3 class="text-2xl font-bold text-white mb-2">
+                        Magodin.
+                      </h3>
+                      <p class="text-white/80 text-center px-4">
+                        Plataforma web de transformacion de imagenes de
+                        documentos a tablas de texto.
+                      </p>
+                      <span
+                        class="mt-4 px-6 py-2 bg-white/20 rounded-full text-white"
+                        >Ver proyecto →</span
+                      >
+                    </div>
+                  </a>
+                  <div
+                    class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+                  >
+                    <a href="#dev-2" class="btn btn-circle">❮</a>
+                    <a href="#dev-2" class="btn btn-circle">❯</a>
+                  </div>
+                </div>
+
+                <!-- Proyecto 2: Nuevo Proyecto -->
+                <div
+                  id="dev-2"
+                  class="carousel-item relative w-full flex justify-center"
+                >
+                  <a
+                    href="https://natal-ia.vercel.app/#asistente-emocional"
+                    target="_blank"
+                    class="group relative block"
+                  >
+                    <img
+                      src="https://res-console.cloudinary.com/dpox0yfvk/thumbnails/v1/image/upload/v1733258066/cmVsaWx5MWFiY2RqaWt6dWxsaWs=/drilldown"
+                      class="h-[70vh] object-contain rounded-lg transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div
+                      class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex flex-col items-center justify-center"
+                    >
+                      <h3 class="text-2xl font-bold text-white mb-2">AIuda.</h3>
+                      <p class="text-white/80 text-center px-4">
+                        Asistente virtual para primeros auxilios psicologicos.
+                      </p>
+                      <span
+                        class="mt-4 px-6 py-2 bg-white/20 rounded-full text-white"
+                        >Ver proyecto →</span
+                      >
+                    </div>
+                  </a>
+                  <div
+                    class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+                  >
+                    <a href="#dev-1" class="btn btn-circle">❮</a>
+                    <a href="#dev-1" class="btn btn-circle">❯</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- La parte donde cuento quién soy -->
+        <section
+          id="about"
+          class="fixed top-16 left-10 right-0 bottom-0 bg-black text-white hidden"
+        >
+          <div class="container mx-auto px-4 py-8 max-w-7xl h-full">
+            <!-- El título grandote de arriba -->
+            <h2 class="text-4xl font-bold mb-8">About Me</h2>
+
+            <div class="flex gap-12 h-[calc(100%-6rem)]">
+              <!-- Columna izquierda: Foto y descripción -->
+              <div class="w-1/2 flex flex-col">
+                <!-- Contenedor de la foto -->
+                <div class="mb-6">
+                  <img
+                    src="https://res-console.cloudinary.com/dpox0yfvk/thumbnails/v1/image/upload/v1733285535/c3J5Ymx5cm5peGJjOGh6bTVhaHE=/drilldown"
+                    alt="Rufo Nava"
+                    class="w-72 h-72 object-cover rounded-lg shadow-lg"
+                  />
+                </div>
+
+                <!-- Línea separadora magenta -->
+                <div class="w-full h-0.5 bg-pink-600 mb-6"></div>
+
+                <!-- Descripción -->
+                <div class="text-gray-300 space-y-4">
+                  <p class="text-lg">
+                    ¡Hola! Soy Rufo, un desarrollador Full Stack apasionado por
+                    crear experiencias web únicas y funcionales.
+                  </p>
+                  <p class="text-lg">
+                    Me especializo en el desarrollo web moderno, combinando
+                    tecnologías front-end y back-end para construir aplicaciones
+                    robustas y escalables.
+                  </p>
+                  <p class="text-lg">
+                    Cuando no estoy codeando, me encontrarás dibujando,
+                    diseñando o explorando nuevas tecnologías.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Columna derecha: Formulario de contacto -->
+              <div class="w-1/2">
+                <form
+                  class="space-y-6 bg-white/5 p-8 rounded-lg backdrop-blur-sm"
+                >
+                  <h3 class="text-2xl font-semibold mb-6">¡Contáctame!</h3>
+
+                  <!-- Nombre -->
+                  <div>
+                    <label
+                      for="name"
+                      class="block text-sm font-medium text-gray-300 mb-2"
+                      >Nombre</label
+                    >
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      class="w-full px-4 py-2 bg-black/30 border border-gray-700 rounded-lg focus:outline-none focus:border-pink-600 text-white"
+                      placeholder="Tu nombre"
+                    />
+                  </div>
+
+                  <!-- Email -->
+                  <div>
+                    <label
+                      for="email"
+                      class="block text-sm font-medium text-gray-300 mb-2"
+                      >Email</label
+                    >
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      class="w-full px-4 py-2 bg-black/30 border border-gray-700 rounded-lg focus:outline-none focus:border-pink-600 text-white"
+                      placeholder="tu@email.com"
+                    />
+                  </div>
+
+                  <!-- Asunto -->
+                  <div>
+                    <label
+                      for="subject"
+                      class="block text-sm font-medium text-gray-300 mb-2"
+                      >Asunto</label
+                    >
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      class="w-full px-4 py-2 bg-black/30 border border-gray-700 rounded-lg focus:outline-none focus:border-pink-600 text-white"
+                      placeholder="Asunto del mensaje"
+                    />
+                  </div>
+
+                  <!-- Mensaje -->
+                  <div>
+                    <label
+                      for="message"
+                      class="block text-sm font-medium text-gray-300 mb-2"
+                      >Mensaje</label
+                    >
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="4"
+                      class="w-full px-4 py-2 bg-black/30 border border-gray-700 rounded-lg focus:outline-none focus:border-pink-600 text-white resize-none"
+                      placeholder="Tu mensaje aquí..."
+                    ></textarea>
+                  </div>
+
+                  <!-- Botón de enviar -->
+                  <button
+                    type="submit"
+                    class="w-full bg-pink-600 hover:bg-pink-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300"
+                  >
+                    Enviar mensaje
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Obtener todos los enlaces de navegación
+        const navLinks = document.querySelectorAll("nav a");
+        const sections = document.querySelectorAll("section");
+
+        // Función para mostrar una sección específica
+        function showSection(sectionId) {
+          // Ocultar todas las secciones
+          sections.forEach((section) => {
+            section.classList.add("hidden");
+            section.classList.remove("active");
+          });
+
+          // Mostrar la sección seleccionada
+          const targetSection = document.querySelector(sectionId);
+          if (targetSection) {
+            targetSection.classList.remove("hidden");
+            targetSection.classList.add("active");
+          }
+
+          // Actualizar estado activo de los enlaces
+          navLinks.forEach((link) => {
+            const href = link.getAttribute("href");
+            if (href === sectionId) {
+              link.classList.add("text-white");
+              link.classList.remove("text-gray-400");
+            } else {
+              link.classList.remove("text-white");
+              link.classList.add("text-gray-400");
+            }
+          });
+        }
+
+        // Agregar event listeners a los enlaces
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = this.getAttribute("href");
+            showSection(target);
+          });
+        });
+
+        // Mostrar la sección inicial (hero)
+        showSection("#hero");
+      });
+
+      const scrollPositions = {
+        illustration: 0,
+        design: 0,
+        development: 0,
+      };
+
+      const scrollAmount = 400;
+
+      function scrollGallery(section, direction) {
+        const containerId = {
+          illustration: "gallery-container",
+          design: "design-gallery-container",
+          development: "dev-gallery-container",
+        }[section];
+
+        const container = document.getElementById(containerId);
+        const maxScroll =
+          container.scrollWidth - container.parentElement.clientWidth;
+        const oldPosition = scrollPositions[section];
+
+        if (direction === "left") {
+          scrollPositions[section] = Math.max(
+            scrollPositions[section] - scrollAmount,
+            0
+          );
+        } else {
+          scrollPositions[section] = Math.min(
+            scrollPositions[section] + scrollAmount,
+            maxScroll
+          );
+        }
+
+        container.style.transform = `translateX(-${scrollPositions[section]}px)`;
+
+        // Actualizar visibilidad de los botones
+        updateButtonVisibility(section, scrollPositions[section], maxScroll);
+      }
+
+      function updateButtonVisibility(section, currentPosition, maxScroll) {
+        const leftBtn = document.getElementById(`${section}-left-btn`);
+        const rightBtn = document.getElementById(`${section}-right-btn`);
+
+        if (leftBtn && rightBtn) {
+          // Mostrar/ocultar botón izquierdo
+          leftBtn.style.opacity = currentPosition <= 0 ? "0.5" : "1";
+          leftBtn.style.pointerEvents = currentPosition <= 0 ? "none" : "auto";
+
+          // Mostrar/ocultar botón derecho
+          rightBtn.style.opacity = currentPosition >= maxScroll ? "0.5" : "1";
+          rightBtn.style.pointerEvents =
+            currentPosition >= maxScroll ? "none" : "auto";
+        }
+      }
+
+      function resetScrollPositions() {
+        Object.keys(scrollPositions).forEach((section) => {
+          scrollPositions[section] = 0;
+          const containerId = {
+            illustration: "gallery-container",
+            design: "design-gallery-container",
+            development: "dev-gallery-container",
+          }[section];
+          const container = document.getElementById(containerId);
+          if (container) {
+            container.style.transform = "translateX(0)";
+            // Resetear visibilidad de botones
+            updateButtonVisibility(
+              section,
+              0,
+              container.scrollWidth - container.parentElement.clientWidth
+            );
+          }
+        });
+      }
+
+      // Inicializar la visibilidad de los botones cuando el DOM esté listo
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.addEventListener("click", resetScrollPositions);
+        });
+
+        // Inicializar visibilidad de botones para cada sección
+        Object.keys(scrollPositions).forEach((section) => {
+          const containerId = {
+            illustration: "gallery-container",
+            design: "design-gallery-container",
+            development: "dev-gallery-container",
+          }[section];
+          const container = document.getElementById(containerId);
+          if (container) {
+            updateButtonVisibility(
+              section,
+              0,
+              container.scrollWidth - container.parentElement.clientWidth
+            );
+          }
+        });
+      });
+
+      // Agregar event listeners para las imágenes de la galería de diseño
+      document
+        .querySelectorAll("#design-gallery-container img")
+        .forEach((img) => {
+          img.onclick = function () {
+            openModal(this.src);
+          };
+        });
+    </script>
+
+    <!-- La ventanita que aparece cuando le das click a una imagen -->
+    <div
+      id="imageModal"
+      class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center"
+      onclick="closeModal()"
+    >
+      <div
+        class="relative max-w-[90vw] max-h-[90vh]"
+        onclick="event.stopPropagation()"
+      >
+        <img
+          id="modalImage"
+          src=""
+          alt="Imagen ampliada"
+          class="max-w-full max-h-[90vh] object-contain"
+        />
+        <button
+          onclick="closeModal()"
+          class="absolute -top-4 -right-4 bg-white text-black w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-200"
+        >
+          ×
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
